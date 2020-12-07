@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Academia.Models.Pessoa>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+<h2>Lista de Usuarios</h2>
+</p>
+
+<div class="form-group">
+
+
+    <label> Buscar </label>
+    <input type="text" class="form-control form-control input-lg" id="txtSearch" aria-describedby="nomeBusca" placeholder="nome">
+
+</div>
+<div class="form-group">
+
+
+    <div id="gridClientes"></div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+        $(() => {
+            carregaClientes();
+
+            $('#txtSearch').on('keyup', () => {
+                carregaClientes();
+            });
+        });
+
+        function carregaClientes()
+        {
+            $.ajax({
+                url: '@Url.Action("BuscaClientes","Home")',
+                dataType: 'html',
+                method: 'GET',
+                data: { nome: $('#txtSearch').val() },
+                success: function (res) {
+                    $('#gridClientes').html('').html(res);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+
+            }
+            )
+        }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h2>Lista Usuarios</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPessoa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoPessoa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+            </tr>
+        }
+
+    </table>*@

@@ -1,0 +1,76 @@
+﻿@model Academia.Models.Avaliacao
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p></p>
+<h2>IMC</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>Avaliacao</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Codigo)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StatusAvaliacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StatusAvaliacao, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.StatusAvaliacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.Pessoa_ID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pessoa_ID, "Pessoa_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Pessoa_ID", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(model => model.Pessoa_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.Professor)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Professor, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Professor, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.Professor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.altura, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.altura, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.altura, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.peso, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.peso, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.peso, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

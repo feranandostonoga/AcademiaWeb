@@ -1,0 +1,57 @@
+﻿@model Academia.Models.Avaliacao
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Tem certeza que deseja deletar isto?</h3>
+<div>
+    <h4>Avaliacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusAvaliacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusAvaliacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtCriado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtCriado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtMarcado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtMarcado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

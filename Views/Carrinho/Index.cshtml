@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Academia.Models.Carrinho>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var total = ViewData["Total"];
+}
+
+<h2>Index</h2>
+
+<p>
+    @*@Html.ActionLink("Adicionar", "Create")*@
+    @Html.ActionLink("Adicionar", "Create", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+</p>
+<div>
+    <table id="tbCarrinho" class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Produtos
+                </th>
+                <th>
+                    Preço
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produtos.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produtos.valor)
+                    </td>
+                    @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Codigo }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Codigo }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Codigo })
+                    </td>*@
+                </tr>
+            }
+
+
+    </table>
+</div>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+
+
+            <th>
+
+                <label id="totalLabel">
+                    TOTAL : R$ @total
+                </label>
+            </th>
+            <th></th>
+        </tr>
+        @*<tr>
+                <td>
+                    10000
+                </td>
+
+            </tr>*@
+    </table>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    
+</script>

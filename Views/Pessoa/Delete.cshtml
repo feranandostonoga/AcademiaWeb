@@ -1,0 +1,75 @@
+﻿@model Academia.Models.Pessoa
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Deletar</h2>
+
+<h3>Tem certeza que deseja deletar isto?</h3>
+<div>
+    <h4>Pessoa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPessoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPessoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmPassword)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div class="btn-group" role="group" aria-label="Third group">
+            <input type="submit" value="Deletar" class="btn btn-primary" />
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Third group">
+            @Html.ActionLink("Voltar", "Index", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+        </div>
+
+        @*<div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+        </div>*@
+    }
+</div>

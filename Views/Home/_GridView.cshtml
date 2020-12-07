@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Academia.Models.Pessoa>
+
+    <div class="col-sm-12">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+
+                    <th>
+                        Tipo Usuario
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+
+                    <th></th>
+                </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoPessoa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                    </tr>
+                }
+
+        </table>
+        </div>

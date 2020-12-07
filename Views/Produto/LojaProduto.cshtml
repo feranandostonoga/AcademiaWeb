@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Academia.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+<h2>Estoque Produtos</h2>
+</p>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Produto
+                </th>
+                <th>
+                    Preço
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.valor)
+                    </td>
+                </tr>
+            }
+
+    </table>

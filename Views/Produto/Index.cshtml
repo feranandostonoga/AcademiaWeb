@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Academia.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Produto</h2>
+
+    <p>
+        @*@Html.ActionLink("Novo", "Create")*@
+        @Html.ActionLink("Adicionar", "Create", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+    </p>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.valor)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.valor)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Codigo }, htmlAttributes: new { @class = "btn btn-warning " })
+                        @Html.ActionLink("Deletar", "Delete", new { id = item.Codigo }, htmlAttributes: new { @class = "btn btn-danger " })
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.Codigo }, htmlAttributes: new { @class = "btn btn-info " })
+
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Codigo }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Codigo }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Codigo })*@
+                    </td>
+                </tr>
+            }
+
+    </table>

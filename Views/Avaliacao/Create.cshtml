@@ -1,0 +1,119 @@
+﻿@model Academia.Models.Avaliacao
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Criar</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Avaliacao</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.StatusAvaliacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StatusAvaliacao, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.StatusAvaliacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pessoa_ID, "Aluno", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Pessoa_ID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Pessoa_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dtCriado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dtCriado, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dtCriado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+            @Html.ActionLink("Voltar", "Index", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+        </div>
+
+
+    </div>
+    
+    </div>
+    }
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+    <script type="text/javascript">
+        $(() => {
+
+            $('#StatusAvaliacao').val("Pendente");
+        });
+
+    //$('#btnSave').click(function () {
+    //    Create();
+
+    //});
+
+    @*function Create()
+    {
+        debugger;
+            $.ajax({
+                url: '@Url.Action("Create","Avaliacao")',
+                //dataType: 'json',
+                type: 'POST',
+                //method: 'POST',
+                //data: { idAluno: $('#Aluno_ID').val() },
+                data: { idAluno: 1 },
+                contentType: 'application/json; charset=utf-8',
+                success: function (res) {
+                    debugger;
+                    //$('#gridClientes').html('').html(res);
+                },
+                error: function (err) {
+                      debugger;
+                    console.log(err);
+                }
+
+            }
+        )
+    }*@
+
+ @*function Create()
+ {
+     var idAluno = $('#Aluno_ID').val();
+     debugger;
+            $.ajax({
+                url: '@Url.Action("Salvar","Avaliacao")',
+                dataType: 'html',
+                method: 'POST',
+                data: { idAluno: idAluno },
+                success: function (res) {
+                    debugger;
+                    //$('#gridClientes').html('').html(res);
+                },
+                error: function (err) {
+                    debugger;
+                    console.log(err);
+                }
+
+            }
+            )
+        }*@
+
+
+    </script>

@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity
+
+@*@{
+    var TipoUsuario = @System.Configuration.ConfigurationManager.AppSettings["TipoUsuario"];
+}*@
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right mr-auto">
+            <li class="nav-item">@Html.ActionLink("Olá " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })</li>
+            <li class="nav-item"><a class="btn btn-warning" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+<ul class="nav navbar-nav navbar-right mr-auto">
+    @*@if (TipoUsuario.ToString() == "Administrador" || TipoUsuario.ToString() == "Professor")
+    {*@<li class="nav-item">@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-warning" })</li>
+        <li class="nav-item">@Html.ActionLink("Registrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-warning" })</li>
+   @* }*@
+        
+    </ul>
+}

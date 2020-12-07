@@ -1,0 +1,51 @@
+﻿@model Academia.Models.Avaliacao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Avaliacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusAvaliacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusAvaliacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtCriado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtCriado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtMarcado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtMarcado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

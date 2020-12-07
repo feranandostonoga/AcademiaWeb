@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Academia.Models.Avaliacao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var TipoUsuario = @System.Configuration.ConfigurationManager.AppSettings["TipoUsuario"];
+}
+
+<h2>Avaliacao</h2>
+@if (TipoUsuario.ToString() == "Administrador" || TipoUsuario.ToString() == "Professor")
+{
+<p>
+    @*@Html.ActionLink("Novo", "Create")*@
+    @Html.ActionLink("Adicionar", "Create", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+</p>
+}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusAvaliacao)
+            </th>
+            <th>
+                Aluno
+            </th>
+
+            <th>
+                Altura
+            </th>
+            <th>
+                Peso
+            </th>
+            <th>
+                Resultado IMC
+            </th>
+            <th>
+                Professor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dtCriado)
+            </th>
+            <th></th>
+        </tr>
+        </thead>    
+
+        @foreach (var item in Model)
+        {
+<tr>
+
+    @if (item.StatusAvaliacao != "Concluida")
+    {
+        <td style=" font-weight:bold ; text-align:center ; background-color:coral">
+            @Html.DisplayFor(modelItem => item.StatusAvaliacao)
+        </td>
+    }
+    else
+    {
+        <td style="font-weight:bold ; text-align:center ; background-color:darkgrey">
+            @Html.DisplayFor(modelItem => item.StatusAvaliacao)
+        </td>
+    }
+
+    @*<td style="background-color: @if (item.StatusAvaliacao != "Concluida") { "red" } else { "blue" }  >
+            @Html.DisplayFor(modelItem => item.StatusAvaliacao)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Pessoa.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.altura)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.peso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.resultadoIMC)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Professor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dtCriado)
+    </td>
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { id = item.Codigo }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Codigo }) |*@
+        @if (TipoUsuario.ToString() == "Administrador" || TipoUsuario.ToString() == "Professor")
+        {
+            @Html.ActionLink("IMC", "Edit", new { id = item.Codigo }, htmlAttributes: new { @class = "btn btn-info " })
+
+            @Html.ActionLink("Deletar", "Delete", new { id = item.Codigo }, htmlAttributes: new { @class = "btn btn-danger " })
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.Codigo })*@
+        }
+    </td>
+</tr>
+        }
+
+</table>

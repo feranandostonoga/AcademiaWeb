@@ -1,0 +1,35 @@
+﻿@model Academia.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo }, htmlAttributes: new { @class = "btn btn-primary " }) |
+    @Html.ActionLink("Voltar", "Index", new { }, htmlAttributes: new { @class = "btn btn-primary " })
+</p>
